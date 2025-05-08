@@ -1,0 +1,52 @@
+.inputArrowPram {
+  padding: 20px;
+  background-color: aliceblue;
+  display: grid;
+  grid-template-columns: 1fr;
+  border-radius: 5px;
+  height: 600px;
+}
+
+.inputArrowPram input {
+  padding: 10px;
+  border: none;
+  width: calc(100% - 20px);
+  height: 1rem;
+}
+
+.inputArrowPram button {
+  border: none;
+  background-color: #666;
+  width: 100%;
+  color: white;
+  font-size: 1.5rem;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.inputArrowPramMatrix {
+  padding: 20px;
+  background-color: aliceblue;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 10fr 1fr;
+  gap: 20px;
+  border-radius: 5px;
+  height: 600px;
+}
+
+.inputArrowPramMatrix textarea {
+  padding: 10px;
+  border: none;
+  width: calc(100% - 20px);
+}
+
+.inputArrowPramMatrix button {
+  border: none;
+  background-color: #666;
+  width: 100%;
+  color: white;
+  font-size: 1.5rem;
+  padding: 5px;
+  border-radius: 5px;
+}
