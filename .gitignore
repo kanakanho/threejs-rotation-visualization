@@ -24,5 +24,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# wrangler files
+.wrangler
+.dev.vars*
+
 **/zzz.*
 **/zzz/**
