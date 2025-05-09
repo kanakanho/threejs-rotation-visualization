@@ -83,37 +83,173 @@ function PramCardMatrix({ arrowPram, setArrowPrams }: PramCardType) {
 }
 
 function PramCardPositionAndRotation({ arrowPram, setArrowPrams }: PramCardType) {
+  const rotationMax = 180
+  const rotationMin = -180
+  const rotationStep = 0.01
+
   return (
     <div className={styles.card}>
       <div className={styles.cardColumn}>
         <h2>Position</h2>
-        <p>
-          X:
-          {arrowPram.position?.x.toFixed(5)}
-        </p>
-        <p>
-          Y:
-          {arrowPram.position?.y.toFixed(5)}
-        </p>
-        <p>
-          Z:
-          {arrowPram.position?.z.toFixed(5)}
-        </p>
+        <div>
+          <p>
+            X:
+            {arrowPram.position?.x.toFixed(5) ?? '0.00000'}
+          </p>
+          <input
+            type="range"
+            min="-5"
+            max="5"
+            step="0.01"
+            value={arrowPram.position?.x ?? 0}
+            onChange={(e) => {
+              const newValue = Number(e.target.value)
+              setArrowPrams(prev =>
+                prev.map(pram =>
+                  pram.id === arrowPram.id
+                    ? {
+                        ...pram,
+                        position: pram.position?.clone().setX(newValue),
+                      }
+                    : pram,
+                ),
+              )
+            }}
+          />
+        </div>
+        <div>
+          <p>
+            Y:
+            {arrowPram.position?.y.toFixed(5) ?? '0.00000'}
+          </p>
+          <input
+            type="range"
+            min="-5"
+            max="5"
+            step="0.01"
+            value={arrowPram.position?.y ?? 0}
+            onChange={(e) => {
+              const newValue = Number(e.target.value)
+              setArrowPrams(prev =>
+                prev.map(pram =>
+                  pram.id === arrowPram.id
+                    ? {
+                        ...pram,
+                        position: pram.position?.clone().setY(newValue),
+                      }
+                    : pram,
+                ),
+              )
+            }}
+          />
+        </div>
+        <div>
+          <p>
+            Z:
+            {arrowPram.position?.z.toFixed(5) ?? '0.00000'}
+          </p>
+          <input
+            type="range"
+            min="-5"
+            max="5"
+            step="0.01"
+            value={arrowPram.position?.z ?? 0}
+            onChange={(e) => {
+              const newValue = Number(e.target.value)
+              setArrowPrams(prev =>
+                prev.map(pram =>
+                  pram.id === arrowPram.id
+                    ? {
+                        ...pram,
+                        position: pram.position?.clone().setZ(newValue),
+                      }
+                    : pram,
+                ),
+              )
+            }}
+          />
+        </div>
       </div>
       <div className={styles.cardColumn}>
         <h2>Rotation</h2>
-        <p>
-          X:
-          {arrowPram.rotation?.x.toFixed(5)}
-        </p>
-        <p>
-          Y:
-          {arrowPram.rotation?.y.toFixed(5)}
-        </p>
-        <p>
-          Z:
-          {arrowPram.rotation?.z.toFixed(5)}
-        </p>
+        <div>
+          <p>
+            X:
+            {(arrowPram.rotation?.x ?? 0).toFixed(5)}
+          </p>
+          <input
+            type="range"
+            min={rotationMin}
+            max={rotationMax}
+            step={rotationStep}
+            value={(arrowPram.rotation?.x ?? 0) * (180 / Math.PI)}
+            onChange={(e) => {
+              const newValue = (Number(e.target.value) * Math.PI) / 180
+              setArrowPrams(prev =>
+                prev.map(pram =>
+                  pram.id === arrowPram.id
+                    ? {
+                        ...pram,
+                        rotation: pram.rotation?.clone().setX(newValue),
+                      }
+                    : pram,
+                ),
+              )
+            }}
+          />
+        </div>
+        <div>
+          <p>
+            Y:
+            {(arrowPram.rotation?.y ?? 0).toFixed(5)}
+          </p>
+          <input
+            type="range"
+            min={rotationMin}
+            max={rotationMax}
+            step={rotationStep}
+            value={(arrowPram.rotation?.y ?? 0) * (180 / Math.PI)}
+            onChange={(e) => {
+              const newValue = (Number(e.target.value) * Math.PI) / 180
+              setArrowPrams(prev =>
+                prev.map(pram =>
+                  pram.id === arrowPram.id
+                    ? {
+                        ...pram,
+                        rotation: pram.rotation?.clone().setY(newValue),
+                      }
+                    : pram,
+                ),
+              )
+            }}
+          />
+        </div>
+        <div>
+          <p>
+            Z:
+            {(arrowPram.rotation?.z ?? 0).toFixed(5)}
+          </p>
+          <input
+            type="range"
+            min={rotationMin}
+            max={rotationMax}
+            step={rotationStep}
+            value={(arrowPram.rotation?.z ?? 0) * (180 / Math.PI)}
+            onChange={(e) => {
+              const newValue = (Number(e.target.value) * Math.PI) / 180
+              setArrowPrams(prev =>
+                prev.map(pram =>
+                  pram.id === arrowPram.id
+                    ? {
+                        ...pram,
+                        rotation: pram.rotation?.clone().setZ(newValue),
+                      }
+                    : pram,
+                ),
+              )
+            }}
+          />
+        </div>
       </div>
       <div className={styles.deleteButton}>
         <button
