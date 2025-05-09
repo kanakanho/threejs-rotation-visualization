@@ -27,6 +27,9 @@ export default function useThreeBase(arrowPrams: ArrowPram[]): RefObject<HTMLCan
       canvas: canvasRef.current || undefined,
     })
     renderer.setSize(window.innerWidth * 0.8, window.innerHeight)
+    if (window.innerWidth < 1200) {
+      renderer.setSize(window.innerWidth, window.innerHeight)
+    }
 
     // ウィンドウサイズ変更時の処理
     const handleResize = () => {
@@ -36,6 +39,9 @@ export default function useThreeBase(arrowPrams: ArrowPram[]): RefObject<HTMLCan
 
       // レンダラーのサイズを更新
       renderer.setSize(window.innerWidth * 0.8, window.innerHeight)
+      if (window.innerWidth < 1200) {
+        renderer.setSize(window.innerWidth, window.innerHeight)
+      }
     }
 
     window.addEventListener('resize', handleResize)
